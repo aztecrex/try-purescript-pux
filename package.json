@@ -1,0 +1,33 @@
+{
+  "name": "try-purescript-pux",
+  "version": "1.0.0",
+  "description": "try purescript pux",
+  "main": "index.js",
+  "scripts": {
+    "prep": "npm install && psc-package update",
+    "webpack": "webpack --progress --bail",
+    "build": "psc-package build && purs bundle output/**/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aztecrex/try-purescript-pux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aztecrex/try-purescript-pux/issues"
+  },
+  "homepage": "https://github.com/aztecrex/try-purescript-pux#readme",
+  "devDependencies": {
+    "purescript": "^0.11.5",
+    "purescript-psa": "^0.5.1",
+    "purs-loader": "^3.0.0",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
