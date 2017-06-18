@@ -1,5 +1,7 @@
 'use strict';
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const path = require('path');
 
 const webpack = require('webpack');
@@ -30,9 +32,8 @@ module.exports = {
   entry: './entry.js',
 
   output: {
-    path: __dirname,
-    pathinfo: true,
-    filename: 'bundle.js'
+    path: path.join(__dirname, "build"),
+    filename: '[name].[chunkhash].js'
   },
 
   module: {
@@ -47,7 +48,7 @@ module.exports = {
               src: [
                 path.join('src', '**', '*.purs')
               ],
-              bundle: false,
+              bundle: true,
               watch: isWebpackDevServer || isWatch,
               pscIde: false
             }
@@ -65,6 +66,26 @@ module.exports = {
   plugins: [
     new webpack.LoaderOptionsPlugin({
       debug: true
+    }),
+    // new webpack.optimize.DedupePlugin(), //dedupe similar code
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true
+    }), //minify everything
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: function (module) {
+           // this assumes your vendor imports exist in the node_modules directory
+           return module.context && module.context.indexOf('node_modules') !== -1;
+        }
+    }),
+    //CommonChunksPlugin will now extract all the common modules from vendor and main bundles
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Welcome to the Working Week',
+      template: path.join(__dirname, "src", "index.ejs"), // Load a custom template (ejs by default see the FAQ for details)
     })
+
   ].concat(plugins)
 };

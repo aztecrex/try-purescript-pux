@@ -22,9 +22,9 @@ foldp Decrement n = { state: n - 1, effects: [] }
 view :: State -> HTML Event
 view count =
   div do
-    button #! onClick (const Increment) $ text "Increment"
+    button #! onClick (const Decrement) $ text "-"
     span $ text (show count)
-    button #! onClick (const Decrement) $ text "Decrement"
+    button #! onClick (const Increment) $ text "+"
 
 -- | Start and render the app
 main :: ∀ fx. Eff (CoreEffects fx) Unit

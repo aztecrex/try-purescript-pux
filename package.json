@@ -6,7 +6,7 @@
   "scripts": {
     "prep": "npm install && psc-package update",
     "webpack": "webpack --progress --bail",
-    "build": "psc-package build && purs bundle output/**/*.js",
+    "build": "webpack --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/aztecrex/try-purescript-pux#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^2.28.0",
     "purescript": "^0.11.5",
     "purescript-psa": "^0.5.1",
     "purs-loader": "^3.0.0",
