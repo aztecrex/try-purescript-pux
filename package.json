@@ -7,6 +7,7 @@
     "prep": "npm install && psc-package update",
     "webpack": "webpack --progress --bail",
     "build": "webpack --progress",
+    "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

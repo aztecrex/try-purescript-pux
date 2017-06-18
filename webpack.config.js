@@ -20,6 +20,8 @@ const plugins =
   ]
 ;
 
+const IS_DEV_SERVER = process.argv[1].indexOf('webpack-dev-server') >= 0;
+
 module.exports = {
   devtool: 'eval-source-map',
 
@@ -33,7 +35,13 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, "build"),
-    filename: '[name].[chunkhash].js'
+    filename: IS_DEV_SERVER ? '[name].js' : '[name].[chunkhash].js'
+  },
+
+  devServer: {
+    hot: true, // Tell the dev-server we're using HMR
+    contentBase: path.resolve(__dirname, 'build'),
+    publicPath: '/'
   },
 
   module: {
@@ -85,7 +93,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Welcome to the Working Week',
       template: path.join(__dirname, "src", "index.ejs"), // Load a custom template (ejs by default see the FAQ for details)
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
 
   ].concat(plugins)
 };
