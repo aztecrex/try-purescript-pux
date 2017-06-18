@@ -5,8 +5,8 @@ app.state.subscribe((state) => {
  window.__puxLastState = state;
 });
 
-// // If hot-reloading, hook into each state change and re-render using the last
-// // state.
-// if (module.hot) {
-//   module.hot.accept();
-// }
+// If hot-reloading, hook into each state change and re-render using the last
+// state.
+if (module.hot) {
+  module.hot.accept();
+}
