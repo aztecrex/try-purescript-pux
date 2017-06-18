@@ -1,4 +1,4 @@
-let ClientEntry = require('./src/Main.purs');
+let ClientEntry = require('./Main.purs');
 let app = ClientEntry.main(window.location.pathname)(window.__puxLastState || ClientEntry.initialState)()
 
 app.state.subscribe((state) => {

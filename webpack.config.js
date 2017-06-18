@@ -29,7 +29,7 @@ module.exports = {
     publicPath: '/'
   },
 
-  entry: './entry.js',
+  entry: './src/entry.js',
 
   output: {
     path: path.join(__dirname, "build"),
