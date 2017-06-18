@@ -19,8 +19,8 @@ extra goals:
 
 ## Workflow
 
-- start a dev server: `npm run start`
-- build for deployment: `npm run build`
+- start a dev server: `./run.sh`
+- build for deployment: `build.sh`
     - static files are put to `./build/`
 
 ## Notes
