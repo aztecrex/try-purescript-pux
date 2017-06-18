@@ -1,7 +1,7 @@
 # Try Purescript Pux
 
 Taking a look at
-[_puresecript-pux](_https://github.com/alexmingoia/purescript-pux).
+[_puresecript-pux_](https://github.com/alexmingoia/purescript-pux).
 In addition to trying out that package, this project has a few
 extra goals:
 
