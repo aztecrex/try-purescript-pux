@@ -20,7 +20,7 @@ extra goals:
 ## Workflow
 
 - start a dev server: `./run.sh`
-- build for deployment: `build.sh`
+- build for deployment: `./build.sh`
     - static files are put to `./build/`
 
 ## Notes
