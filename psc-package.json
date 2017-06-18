@@ -1,0 +1,10 @@
+{
+    "name": "try-purescript-pux",
+    "set": "master",
+    "source": "https://github.com/purescript/package-sets.git",
+    "depends": [
+        "pux",
+        "psci-support",
+        "prelude"
+    ]
+}
