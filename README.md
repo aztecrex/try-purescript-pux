@@ -19,9 +19,10 @@ extra goals:
 
 ## Workflow
 
-- start a dev server: `./run.sh`
 - build for deployment: `./build.sh`
     - static files are put to `./build/`
+- start a dev server: `./run.sh`
+    - there is a bug, run `./build.sh` first
 
 ## Notes
 
