@@ -31,10 +31,6 @@ if (!isWebpackDevServer) {
     }),
     new webpack.optimize.CommonsChunkPlugin({
         name: 'manifest'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Welcome to the Working Week',
-      template: path.join(__dirname, "src", "index.ejs"),
     })
   );
 }
@@ -95,6 +91,10 @@ module.exports = {
   plugins: [
     new webpack.LoaderOptionsPlugin({
       debug: true
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Welcome to the Working Week',
+      template: path.join(__dirname, "src", "index.ejs"),
     }),
 
   ].concat(plugins)
