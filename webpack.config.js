@@ -10,15 +10,34 @@ const isWebpackDevServer = process.argv.filter(a => path.basename(a) === 'webpac
 
 const isWatch = process.argv.filter(a => a === '--watch').length
 
-const plugins =
-  isWebpackDevServer || !isWatch ? [] : [
+let plugins = []
+
+
+if (isWebpackDevServer || !isWatch)
+  plugins.push(
     function(){
       this.plugin('done', function(stats){
         process.stderr.write(stats.toString('errors-only'));
       });
-    },
-  ]
-;
+    });
+
+if (!isWebpackDevServer) {
+  plugins.push(
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: function (module) {
+           return module.context && module.context.indexOf('node_modules') !== -1;
+        }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Welcome to the Working Week',
+      template: path.join(__dirname, "src", "index.ejs"),
+    })
+  );
+}
 
 module.exports = {
 
@@ -76,19 +95,6 @@ module.exports = {
   plugins: [
     new webpack.LoaderOptionsPlugin({
       debug: true
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: function (module) {
-           return module.context && module.context.indexOf('node_modules') !== -1;
-        }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-        name: 'manifest'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Welcome to the Working Week',
-      template: path.join(__dirname, "src", "index.ejs"),
     }),
 
   ].concat(plugins)
