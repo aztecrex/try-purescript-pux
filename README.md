@@ -31,5 +31,8 @@ configured the _set_ parameter to _master_ since it looks like it
 will be available in the next release. Not sure if that's
 conventional but it works well enough for this experiment.
 
-The live reload story is not great here. Even for a simple app like
-this, changes take quite a while to compile and show in the browser.
+~~~The live reload story is not great here. Even for a simple app like
+this, changes take quite a while to compile and show in the browser.~~~
+_this seems to be fixed now, the `purs-loader` rule in the webpack
+config now turns off bundling if watch or dev-server are detected_
+
